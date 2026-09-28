@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourtoise AI</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;     
+            overflow: hidden;  
+            display: flex;
+            flex-direction: column;
+        }
+        #output{
+            border: 1px solid darkblue;
+            padding: 10px;
+            height: 500px;
+            flex-grow: 1;
+            overflow-y: auto;
+            background-color: lightyellow;
+        }
+        #output p{
+            display: flex;
+            margin: 8px 10px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            max-width: 70%; 
+            clear: both;
+        }
+        #output p b {
+            margin-right: 8px;
+        }
+
+        #text-user{
+            float: right;
+            background-color: #0084ff;
+            color: white
+        }
+        #text-ai{
+            float: left;
+            background-color: #e4e6eb;
+            color: black;
+        }
+        #top-banner {
+            background-color: lightblue; 
+            color: white; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            padding: 15px 30px;
+            top: 0;
+            z-index: 1000;
+            position: sticky;
+        }
+        #logo{
+            font-size: 24px;
+            font-weight: bold;
+        }
+        #nav-links a {
+            color: white;
+            text-decoration: none; 
+            margin-left: 20px; 
+            font-size: 16px;
+            transition: color 0.3s; 
+        }
+        #nav-links a:hover {
+            color: #ff9900; 
+        }
+        #input{
+            padding: 14px;
+            width: calc(100% - 80px); 
+            box-sizing: border-box;   
+            color: black;
+            margin: 0px;
+            float: left;
+            background: whitesmoke;
+            border: 1px solid blue;           
+        }
+        #input::placeholder{
+            color: lightblue;
+            font-weight: 600;
+        }
+        #button{
+            padding: 14px;
+            width: 80px;              
+            box-sizing: border-box;   
+            background: whitesmoke;
+            float: left;              
+            cursor: pointer;
+            border: 1px solid blue;
+            color: lightblue;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <header id="top-banner">
+    <div id="logo">Tourtoise AI</div>
+    <nav id="nav-links">
+        <a href="#">Acasă</a>
+        <a href="#">Despre Tourtoise AI</a>
+        <a href="#">Copyright</a>
+        <a href="#">Chat nou</a>
+    </nav>
+    </header
+    <center><div id="output"></div></center>
+    <center>
+        <input id="input" placeholder="Ce ai in gand?">
+        <button onclick="chat()" id="button">Trimite</button>
+    </center>
+</body>
+<script>
+    function chat(){
+        let input = document.getElementById("input").value.toLowerCase();
+        let output = document.getElementById("output");
+        let response = "";
+
+        if(input.includes("salut") || input.includes("sal") || input.includes("privet")){
+            response = "Salut! Cu ce te pot ajuta?"
+        }
+        else if(input.includes("nume") || input.includes("numele") || input.includes("cheama")){
+            response = "Sunt Tourtoise AI, conceput pentru a te ajuta!"
+        }
+        else if(input === ""){
+            response = "Pentru o comunicare mai pe intelesul nostru, incearca sa scrii ceva inainte de a trimite!"
+        }
+        else if(input.includes("gluma") || input.includes("ras")){
+            response = "Stii gluma cu iepurasul in baie? Nici eu n-o stiu, ca era usa inchisa!😆😆🤣 "
+        }
+        else if(input.includes("ce faci")){
+            response = "Vorbesc cu tine! Ce altceva as putea sa fac?😊"
+        }
+        else if(input.includes("bts")){
+            response = "BTS (Bangtan Sonyeondan) este o trupa K-POP sud-coreeana, formata din 7 membri, sub agentia Big Hit Music. Membrii acestei trupe sunt: Kim Namjoon(RM), Kim Seok-jin(Jin), Min Yoon-gi(SUGA), Jung Ho-seok(J-hope), Park Jimin(Jimin), Kim Tae-hyung❤️(V) si Jeon Jung-kook(Jung Kook)."
+        }
+        else if(input.includes("cunoscute brainroturi") || input.includes("brainrot")){
+            response = "Cele mai cunoscute brainroturi sunt: Tralalero Tralala, Orcalero Orcala, Ballerina Cappucina, Lirili Larila, Tung Tung Tung Sahur(Triple T), Udin Din Dun, Br Br Patapim si Cappucino Assasino."
+        }
+        else if(input.includes("cheama tourtoise ai")){
+            response = "Asa mi-a fost dat! Tu ce nume ai?"
+        }
+        else if(input.includes("gta 6")){
+            response = "Grand Theft Auto VI este un viitor joc de actiune si aventura intr-o lume deschisa in curs de dezvoltare de Rockstar North si publicat de Rockstar Games."
+        }
+        else if(input.includes("mancare sa fac")){
+            response = "Poti face piure, hrisca, supa, poti manca la restaurant sau poti comanda online."
+        }
+        else if(input.includes("cine esti facut") || input.includes("creat")){
+            response = "Sunt creat de Costandoi Ion, un elev in clasa a sasea."
+        }
+        else if(input.includes("activitati pot face afara") || input.includes("jocuri afara")){
+            response = "Poti organiza o multime de jocuri si activitati afara. Iata cateva dintre ele: De-a v-ati ascunselea/prinselea, Jocuri de masa(Monopoly, Connect 4, Zaruri etc.), Badminton, Tennis, Fotbal si multe altele."
+        }
+        else{
+            response = "Scuze! Sunt in versiunea BETA, si nu stiu anumite lucruri. Sunt un AI simplu, de aceea nu invat din raspunsuri. Asteapta pana creatorul meu va adauga cerinta ta, sau scrie o alta intrebare!"
+        }
+        output.innerHTML += "<p id='text-user'><b>Eu:</b> " + input + "</p>";
+        output.innerHTML += "<p id='text-ai'><b>AI:</b> " + response + "</p>";
+        document.getElementById("input").value = "";
+        
+        scroll()
+    }
+    function scroll() {
+        const chat = document.getElementById('output');
+        if (chat) {
+            chat.scrollTop = chat.scrollHeight;
+        }
+    }
+    window.addEventListener('DOMContentLoaded', scroll);
+
+    document.getElementById("input").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        chat();
+    }
+});
+
+</script>
+</html>
